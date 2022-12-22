@@ -1,5 +1,7 @@
 @extends('admin.master')
-
+@section('dashboard')
+    active
+@endsection
 @section('header')
     Dashboard Page
 @endsection

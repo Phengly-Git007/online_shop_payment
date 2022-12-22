@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('backend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/daterangepicker/daterangepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote-bs4.min.css') }}">
+    @yield('styles')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -36,7 +37,7 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item">@yield('path')</li>
+
                                 <li class="breadcrumb-item">@yield('action')</li>
                             </ol>
                         </div>
@@ -69,6 +70,19 @@
     <script src="{{ asset('backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <script src="{{ asset('backend/dist/js/adminlte.js') }}"></script>
     {{-- <script src="{{ asset('backend/dist/js/pages/dashboard.js') }}"></script> --}}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @if (session('status'))
+        <script>
+            // swal("{{ session('status') }}")
+            swal({
+                title: "Done",
+                text: "{{ session('status') }}",
+                icon: "success",
+                button: "OK",
+            });
+        </script>
+    @endif
+    @yield('scripts')
 </body>
 
 </html>
