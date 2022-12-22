@@ -69,6 +69,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="float-right mr-5">
+                    {{ $products->links() }}
+                </div>
             </div>
         </div>
     </div>
