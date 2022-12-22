@@ -39,7 +39,7 @@ class CategoryController extends Controller
             'image' =>$images
         ]);
         if($category){
-            return redirect('categories')->with('status','Category Created Successfully');
+            return redirect('categories')->with('message','Category Created Successfully');
         }
     }
 
@@ -73,7 +73,7 @@ class CategoryController extends Controller
             'meta_keyword' => $request->meta_keyword,
             'image' =>$images
         ]);
-        return redirect('categories')->with('status','Category Updated Successfully');
+        return redirect('categories')->with('message','Category Updated Successfully');
     }
 
     public function destroy(Category $category)
@@ -81,6 +81,6 @@ class CategoryController extends Controller
         //delete category file
         Storage::delete($category->image);
         $category->delete();
-        return redirect('categories')->with('status','Category Deleted Successfully');
+        return redirect('categories')->with('message','Category Deleted Successfully');
     }
 }

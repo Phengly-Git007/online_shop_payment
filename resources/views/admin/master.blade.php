@@ -33,7 +33,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h5 class="m-0">@yield('header')</h5>
+                            <h5 class="m-0 text-primary">@yield('header')</h5>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -71,12 +71,12 @@
     <script src="{{ asset('backend/dist/js/adminlte.js') }}"></script>
     {{-- <script src="{{ asset('backend/dist/js/pages/dashboard.js') }}"></script> --}}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    @if (session('status'))
+    @if (session('message'))
         <script>
             // swal("{{ session('status') }}")
             swal({
                 title: "Done",
-                text: "{{ session('status') }}",
+                text: "{{ session('message') }}",
                 icon: "success",
                 button: "OK",
             });

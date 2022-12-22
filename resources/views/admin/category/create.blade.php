@@ -14,13 +14,13 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="card card-primary card-outline">
+        <div class="card">
             <div class="card-body">
                 <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="">Username</label>
+                            <label for="">Category Name</label>
                             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                                 placeholder="name" autofocus autocomplete="name">
                             @error('name')

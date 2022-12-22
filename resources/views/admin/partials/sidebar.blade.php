@@ -32,7 +32,7 @@
               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                   data-accordion="false">
                   <li class="nav-item menu-open">
-                      <a href="{{ route('dashboard') }}" class="nav-link @yield('dashboard')">
+                      <a href="{{ route('dashboard.index') }}" class="nav-link @yield('dashboard')">
                           <i class="nav-icon fas fa-tachometer-alt"></i>
                           <p>
                               Dashboard
@@ -46,6 +46,24 @@
                           <i class="nav-icon fas fa-th"></i>
                           <p>
                               Category
+                              <span class="right badge badge-danger">New</span>
+                          </p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="{{ route('products.index') }}" class="nav-link @yield('product')">
+                          <i class="nav-icon fas fa-th"></i>
+                          <p>
+                              Product
+                              <span class="right badge badge-danger">New</span>
+                          </p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="#" class="nav-link">
+                          <i class="nav-icon fas fa-th"></i>
+                          <p>
+                              Widgets
                               <span class="right badge badge-danger">New</span>
                           </p>
                       </a>
