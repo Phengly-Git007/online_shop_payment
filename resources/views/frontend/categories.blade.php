@@ -14,7 +14,8 @@
                         <div class="col-md-3 mb-3">
                             <div class="card">
                                 <div class="card-body">
-                                    <a href="" class="ref" style="text-decoration: none">
+                                    <a href="{{ url('category/' . $category->slug) }}" class="ref"
+                                        style="text-decoration: none">
                                         <img src="{{ Storage::url($category->image) }}" alt="Category image" width="250px"
                                             height="200px">
                                         <p>{{ $category->name }}</p>

@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/owl.theme.default.min.css') }}">
     @yield('styles')
+    <style>
+        a {
+            text-decoration: none !important;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -24,11 +29,11 @@
     <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    @if (session('message'))
+    @if (session('status'))
         <script>
             swal({
                 title: "Done",
-                text: "{{ session('message') }}",
+                text: "{{ session('status') }}",
                 icon: "success",
                 button: "OK",
             });
