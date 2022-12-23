@@ -6,17 +6,20 @@
 
 @section('content')
     @include('frontend.partials.slider')
+
     <div class="container py-5">
-        <div class="row mb-3">
+        <div class="row mb-2">
             <h5>Feature Products</h5>
-            <div class="owl-carousel product-carousel owl-theme">
-                @foreach ($products as $product)
+            <div class="owl-carousel item-carousel owl-theme">
+                @foreach ($feature_products as $product)
                     <div class="item">
                         <div class="card">
-                            <a href="" class="" style="text-decoration: none">
-                                <img src="{{ Storage::url($product->image) }}" alt="image" width="250px" height="250px">
-                            </a>
                             <div class="card-body">
+                                <a href="" class="" style="text-decoration: none">
+                                    <img src="{{ Storage::url($product->image) }}" alt="image" width="250px"
+                                        height="200px">
+                                </a>
+
                                 <a href="" class="ref" style="text-decoration: none">
                                     <p>{{ $product->name }}</p>
                                 </a>
@@ -33,14 +36,42 @@
 
         </div>
     </div>
+    {{-- trending category --}}
+    <div class="container pb-5">
+        <div class="row mb-5">
+            <h5>Trending Category</h5>
+            <div class="owl-carousel item-carousel owl-theme">
+                @foreach ($trending_categories as $category)
+                    <div class="item">
+                        <div class="card">
+                            <div class="card-body">
+                                <a href="" class="" style="text-decoration: none">
+                                    <img src="{{ Storage::url($category->image) }}" alt="image" width="250px"
+                                        height="200px">
+                                </a>
+
+                                <a href="" class="ref" style="text-decoration: none">
+                                    <p>{{ $category->name }}</p>
+                                </a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
     <script>
-        $('.product-carousel').owlCarousel({
+        $('.item-carousel').owlCarousel({
             loop: true,
             margin: 10,
             nav: true,
+            dots: false,
             responsive: {
                 0: {
                     items: 1

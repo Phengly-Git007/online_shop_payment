@@ -75,8 +75,8 @@
                         <div class="form-group col-md-6">
                             <label for="">Popular</label>
                             <select name="popular" id="popular" class="form-control">
-                                <option value="0" {{ old('popular') === 0 ? 'selected' : '' }}>trending</option>
-                                <option value="1" {{ old('popular') === 1 ? 'selected' : '' }}>old model</option>
+                                <option value="0" {{ old('popular') === 0 ? 'selected' : '' }}>no trending</option>
+                                <option value="1" {{ old('popular') === 1 ? 'selected' : '' }}>trending</option>
                             </select>
                             @error('popular')
                                 <div class="invalid-feedback" role="alert">

@@ -51,17 +51,18 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="right badge badge-{{ $category->popular ? 'danger' : 'primary' }}">
-                                        {{ $category->popular ? 'old model' : 'trending' }}
+                                    <span class="right badge badge-{{ $category->popular ? 'primary' : 'warning' }}">
+                                        {{ $category->popular ? 'trending' : 'no trending' }}
                                     </span>
                                 </td>
                                 <td>{{ \Carbon\Carbon::parse($category->created_at)->format('d-M-Y') }}</td>
                                 <td>{{ \Carbon\Carbon::parse($category->updated_at)->format('d-M-Y') }}</td>
                                 <td>
-                                    <a href="{{ route('categories.edit', $category) }}"
-                                        class="btn btn-xs btn-warning mr-1"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="{{ route('categories.show', $categories) }}" class="btn btn-xs btn-primary"><i
-                                            class="fas fa-eye"></i> Show</a>
+
+                                    <a href="{{ route('categories.show', $categories) }}"
+                                        class="btn btn-xs btn-primary mr-1"><i class="fas fa-eye"></i> Show</a>
+                                    <a href="{{ route('categories.edit', $category) }}" class="btn btn-xs btn-warning "><i
+                                            class="fas fa-edit"></i> Edit</a>
                                     <a class="btn btn-xs">
                                         <form action="{{ route('categories.destroy', $category) }}" method="POST"
                                             onsubmit="return confirm('Are you sure, delete {{ $category->name }} ? ') ">

@@ -83,9 +83,10 @@
                             <label for="">Popular</label>
                             <select name="popular" class="form-control">
                                 <option value="0" {{ old('popular', $category->popular) === 0 ? 'selected' : '' }}>
-                                    trending</option>
-                                <option value="1" {{ old('popular', $category->popular) === 1 ? 'selected' : '' }}>old
-                                    model</option>
+                                    no trending</option>
+                                <option value="1" {{ old('popular', $category->popular) === 1 ? 'selected' : '' }}>
+                                    trending
+                                </option>
                             </select>
                             @error('popular')
                                 <div class="invalid-feedback" role="alert">
