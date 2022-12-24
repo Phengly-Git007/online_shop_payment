@@ -8,10 +8,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ url('/') }}">Home</a>
+                    <a class="nav-link " aria-current="page" href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('category') }}">Category</a>
+                    <a class="nav-link " aria-current="page" href="#">Contacts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('category') }}">Categories</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Cart</a>

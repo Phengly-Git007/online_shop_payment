@@ -8,8 +8,9 @@
     @include('frontend.partials.slider')
 
     <div class="container py-5">
-        <div class="row mb-2">
+        <div class="row ">
             <h5>Feature Products</h5>
+            <hr>
             <div class="owl-carousel item-carousel owl-theme">
                 @foreach ($feature_products as $product)
                     <div class="item">
@@ -21,7 +22,7 @@
                                 </a>
 
                                 <a href="" class="ref" style="text-decoration: none">
-                                    <p>{{ $product->name }}</p>
+                                    <p style="font-size: 15px">{{ $product->name }}</p>
                                 </a>
                                 <small class="text-gray" style="font-weight: 500"><del>$
                                         {{ $product->selling_price }}</del></small>
@@ -38,8 +39,9 @@
     </div>
     {{-- trending category --}}
     <div class="container pb-5">
-        <div class="row mb-5">
+        <div class="row mb-3">
             <h5>Trending Category</h5>
+            <hr>
             <div class="owl-carousel item-carousel owl-theme">
                 @foreach ($trending_categories as $category)
                     <div class="item">
@@ -51,7 +53,7 @@
                                 </a>
 
                                 <a href="" class="ref" style="text-decoration: none">
-                                    <p>{{ $category->name }}</p>
+                                    <p style="font-size: 15px">{{ $category->name }}</p>
                                 </a>
 
                             </div>
