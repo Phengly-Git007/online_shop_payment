@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="container ">
-        <div class="card shadow">
+        <div class="card shadow product_data">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4 border-right">
@@ -37,10 +37,9 @@
                             <span class="right badge badge-danger ">Out Of Stock</span>
                         @endif
                         <br>
-                        <input type="hidden" class="product_id" value="{{ $products->id }}">
                         <div class="row mt-2">
-
                             <div class="col-md-2 ">
+                                <input type="hidden" class="product_id" value="{{ $products->id }}">
                                 <label for="quantity">Quantity</label>
                                 <div class="input-group text-center mb-3" style="width: 130px">
                                     <button class="input-group-text decrement-quantity " style="cursor: pointer">-</button>
@@ -54,7 +53,7 @@
                                 <button type="button" class="btn btn-primary ms-5 float-start"><i
                                         class="fa-solid fas fa-heart"></i>
                                     Add To Wishlist</button>
-                                <button type="button" class="btn btn-warning ms-3 float-start"><i
+                                <button type="button" class="btn btn-warning ms-3 float-start addToCart"><i
                                         class="fa fa-shopping-cart"></i> Add To Card</button>
                             </div>
                         </div>
@@ -68,6 +67,34 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
+
+            // add-to-cart
+
+            $('.addToCart').click(function(e) {
+                e.preventDefault();
+                var product_id = $(this).closest('.product_data').find('.product_id').val();
+                var quantity = $(this).closest('.product_data').find('.quantity-input').val();
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    method: "POST",
+                    url: "/add-to-cart",
+                    data: {
+                        'product_id': product_id,
+                        'quantity': quantity
+                    },
+                    success: function(response) {
+                        alert(response.status);
+                    }
+                });
+
+            });
+
             // increment quantity
             $('.increment-quantity').click(function(e) {
                 e.preventDefault();
@@ -91,8 +118,6 @@
                     $('.quantity-input').val(value);
                 }
             });
-
-
         });
     </script>
 @endsection
