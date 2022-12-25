@@ -20,7 +20,7 @@ class LoginController extends Controller
             return redirect('/dashboard')->with('status','welcome to dashboard');
         }
         elseif(Auth::user()->role == '0'){
-            return redirect('/home');
+            return redirect('/');
         }
     }
 

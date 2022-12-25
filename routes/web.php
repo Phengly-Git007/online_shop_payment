@@ -22,8 +22,11 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth'])->group(function(){
-    Route::post('add-to-cart',[CartController::class,'addProductToCart']);
+    Route::get('/cart',[CartController::class, 'showCart']);
 });
+
+Route::post('add-to-cart',[CartController::class,'addProductToCart']);
+Route::post('delete-cart-item',[CartController::class,'deleteProductFromCart']);
 
 // new versions
 Route::middleware(['auth','admin'])->group(function(){
