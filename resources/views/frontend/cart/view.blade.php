@@ -19,19 +19,24 @@
     <div class="container my-3">
         <div class="card shadow ">
             <div class="card-body">
+                @php
+                    $total = 0;
+                @endphp
                 @foreach ($carts as $cart)
                     <div class="row product_data">
-                        <div class="col-md-2">
+                        <div class="col-md-2 my-auto">
                             <img src="{{ Storage::url($cart->products->image) }}" alt="image" width="50px"
                                 height="50px">
                             <hr>
                         </div>
-                        <div class="col-md-5">
-                            <h5>{{ $cart->products->name }}</h5>
+                        <div class="col-md-3 my-auto">
+                            <h6>{{ $cart->products->name }}</h6>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2 my-auto">
+                            <h6>$ {{ $cart->products->selling_price }}</h6>
+                        </div>
+                        <div class="col-md-3 my-auto">
                             <input type="hidden" class="product_id" value="{{ $cart->product_id }}">
-                            {{-- <label for="quantity">Quantity</label> --}}
                             <div class="input-group text-center mb-3" style="width: 130px">
                                 <button class="input-group-text decrement-quantity">-</button>
                                 <input type="text" name="quantity" class="form-control text-center quantity-input"
@@ -39,11 +44,21 @@
                                 <button class="input-group-text increment-quantity">+</button>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <a href="" class="btn btn-danger delete-cart-item"><i class="fa fa-trash"></i> Remove</a>
+
+                        <div class="col-md-2 my-auto">
+                            <a href="" class="btn btn-danger delete-cart-item"><i class="fa fa-trash"></i>
+                                Remove</a>
                         </div>
                     </div>
+                    @php
+                        $total += $cart->products->selling_price * $cart->quantity;
+                    @endphp
                 @endforeach
+            </div>
+            <div class="card-footer">
+                <h5>Total : $ {{ $total }}
+                    <a href="{{ url('checkout') }}" class="btn btn-primary float-end mr-5 ">Checkout</a>
+                </h5>
             </div>
         </div>
     </div>

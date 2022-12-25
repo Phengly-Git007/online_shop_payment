@@ -21,6 +21,7 @@
     <style>
         a {
             text-decoration: none !important;
+            color: black
         }
     </style>
 </head>
