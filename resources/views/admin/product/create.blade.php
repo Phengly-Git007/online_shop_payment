@@ -76,8 +76,8 @@
                         <div class="form-group col-md-3">
                             <label for="">Trending</label>
                             <select name="trending" id="trending" class="form-control">
-                                <option value="0" {{ old('trending') === 0 ? 'selected' : '' }}>active</option>
-                                <option value="1" {{ old('trending') === 1 ? 'selected' : '' }}>hidden</option>
+                                <option value="0" {{ old('trending') === 0 ? 'selected' : '' }}>hidden</option>
+                                <option value="1" {{ old('trending') === 1 ? 'selected' : '' }}>active</option>
                             </select>
                             @error('trending')
                                 <div class="invalid-feedback" role="alert">

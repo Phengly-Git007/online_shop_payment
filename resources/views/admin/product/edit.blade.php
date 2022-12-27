@@ -83,9 +83,9 @@
                             <label for="">Trending</label>
                             <select name="trending" id="trending" class="form-control">
                                 <option value="0" {{ old('trending', $product->trending) === 0 ? 'selected' : '' }}>
-                                    active</option>
-                                <option value="1" {{ old('trending', $product->trending) === 1 ? 'selected' : '' }}>
                                     hidden</option>
+                                <option value="1" {{ old('trending', $product->trending) === 1 ? 'selected' : '' }}>
+                                    active</option>
                             </select>
                             @error('trending')
                                 <div class="invalid-feedback" role="alert">

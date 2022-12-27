@@ -20,36 +20,53 @@
                 <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th>Image</th>
-                            <th>Quantity</th>
-                            <th>Cost Of Good</th>
-                            <th>Price</th>
-                            <th>Tax</th>
-                            <th>Status</th>
-                            <th>Trending</th>
-                            <th>Created</th>
-                            <th>Action</th>
+                            <th>id</th>
+                            <th>name</th>
+                            <th>category</th>
+                            <th>image</th>
+                            <th>qty</th>
+                            <th>cog</th>
+                            <th>price</th>
+                            <th>tax</th>
+                            <th>status</th>
+                            <th>trending</th>
+                            <th>treated</th>
+                            <th>action controller</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($products as $product)
                             <tr>
                                 <td>{{ $product->id }}</td>
-                                <td>{{ $product->name }}</td>
-                                <td>{{ $product->category->name }}</td>
-                                <td>
-                                    <img src="{{ Storage::url($product->image) }}" alt="image" width="50px" height="40px">
+                                <td><span class="right badge badge-primary">
+                                        {{ $product->name }} </span>
                                 </td>
-                                <td>{{ $product->quantity }}</td>
-                                <td>$ {{ $product->cost_of_good }}</td>
-                                <td>$ {{ $product->selling_price }}</td>
-                                <td>{{ $product->tax }}</td>
-                                <td>{{ $product->status }}</td>
-                                <td>{{ $product->trending }}</td>
-                                <td>{{ \Carbon\Carbon::parse($product->created_at)->format('d-M-Y') }}</td>
+                                <td><span class="right badge badge-danger">{{ $product->category->name }}</span></td>
+                                <td>
+                                    <img src="{{ Storage::url($product->image) }}" alt="image" width="50px"
+                                        height="40px">
+                                </td>
+                                {{-- <td><span class="right badge badge-info">{{ $product->quantity }}</span></td> --}}
+                                <td> <span class="right badge badge-{{ $product->quantity ? 'info' : 'danger' }}">
+                                        {{ $product->quantity }}
+                                        {{ $product->quantity ? 'Instock' : 'Out Of Stock' }}
+
+                                    </span>
+                                </td>
+                                <td><span class="right badge badge-primary">$ {{ $product->cost_of_good }}</span></td>
+                                <td><span class="right badge badge-primary">$ {{ $product->selling_price }}</span></td>
+                                <td><span class="right badge badge-danger">$ {{ $product->tax }}</span></td>
+                                <td><span class="right badge badge-{{ $product->status ? 'info' : 'success' }}">
+                                        {{ $product->status ? 'hidden' : 'active' }}
+                                    </span>
+                                </td>
+                                <td><span class="right badge badge-{{ $product->trending ? 'info' : 'warning' }}">
+                                        {{ $product->trending ? 'active' : 'hidden' }}
+                                    </span>
+                                </td>
+                                <td><span
+                                        class="right badge badge-info">{{ \Carbon\Carbon::parse($product->created_at)->format('d-M-Y') }}</span>
+                                </td>
                                 <td>
                                     <a href="{{ route('products.show', $product) }}" class="btn btn-xs btn-success mr-1"><i
                                             class="fas fa-eye"></i> Show</a>

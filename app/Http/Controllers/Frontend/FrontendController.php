@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
     public function index(){
-        $feature_products = Product::where('trending','0')->take(10)->get();
+        $feature_products = Product::where('trending','1')->take(10)->get();
         $trending_categories = Category::where('popular','1')->take(10)->get();
         return view('frontend.index',[
             'feature_products' => $feature_products,

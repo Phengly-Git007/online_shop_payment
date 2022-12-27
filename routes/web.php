@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,7 @@ Route::get('/',[FrontendController::class,'index']);
 Route::get('/category',[FrontendController::class,'category']);
 Route::get('/category/{slug}',[FrontendController::class,'viewCategory']);
 Route::get('/category/{cate_slug}/{pro_slug}',[FrontendController::class,'productDetails']);
+Route::get('/contact',[ContactController::class,'contact']);
 
 Auth::routes();
 
@@ -25,6 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['auth'])->group(function(){
     Route::get('/cart',[CartController::class, 'showCart']);
     Route::get('/checkout',[CheckoutController::class,'checkout']);
+    Route::post('/place-order',[CheckoutController::class, 'placeOrder']);
 });
 
 Route::post('add-to-cart',[CartController::class,'addProductToCart']);

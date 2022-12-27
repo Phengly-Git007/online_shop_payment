@@ -37,12 +37,20 @@
                         </div>
                         <div class="col-md-3 my-auto">
                             <input type="hidden" class="product_id" value="{{ $cart->product_id }}">
-                            <div class="input-group text-center mb-3" style="width: 130px">
-                                <button class="input-group-text decrement-quantity">-</button>
-                                <input type="text" name="quantity" class="form-control text-center quantity-input"
-                                    value="{{ $cart->quantity }}" readonly>
-                                <button class="input-group-text increment-quantity">+</button>
-                            </div>
+                            @if ($cart->products->quantity >= $cart->quantity)
+                                <div class="input-group text-center mb-3" style="width: 130px">
+                                    <button class="input-group-text decrement-quantity">-</button>
+                                    <input type="text" name="quantity" class="form-control text-center quantity-input"
+                                        value="{{ $cart->quantity }}" readonly>
+                                    <button class="input-group-text increment-quantity">+</button>
+                                </div>
+                                @php
+                                    $total += $cart->products->selling_price * $cart->quantity;
+                                @endphp
+                            @else
+                                <span class="right badge badge-danger ">Out Of Stock</span>
+                            @endif
+
                         </div>
 
                         <div class="col-md-2 my-auto">
@@ -50,9 +58,6 @@
                                 Remove</a>
                         </div>
                     </div>
-                    @php
-                        $total += $cart->products->selling_price * $cart->quantity;
-                    @endphp
                 @endforeach
             </div>
             <div class="card-footer">

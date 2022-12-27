@@ -50,11 +50,15 @@
                             </div>
                             <div class="col-md-10 mt-2">
                                 <br>
-                                <button type="button" class="btn btn-primary ms-5 float-start"><i
+                                <button type="button" class="btn btn-primary ms-4 float-start"><i
                                         class="fa-solid fas fa-heart"></i>
                                     Add To Wishlist</button>
-                                <button type="button" class="btn btn-warning ms-3 float-start addToCart"><i
-                                        class="fa fa-shopping-cart"></i> Add To Card</button>
+                                @if ($products->quantity > 0)
+                                    <button type="button" class="btn btn-warning ms-3 float-start addToCart"><i
+                                            class="fa fa-shopping-cart"></i> Add To Card</button>
+                                @endif
+
+
                             </div>
                         </div>
                     </div>
