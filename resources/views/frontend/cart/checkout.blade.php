@@ -95,7 +95,7 @@
                                         <tr>
                                             <td>{{ $cart->products->name }}</td>
                                             <td>{{ $cart->quantity }}</td>
-                                            <td>{{ $cart->products->selling_price }}</td>
+                                            <td>{{ $cart->products->cost_of_good }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

@@ -38,7 +38,15 @@ class CheckoutController extends Controller
        $order->state = $request->input('state');
        $order->country = $request->input('country');
        $order->pincode = $request->input('pincode');
-       $order-> tracking_no ='op-shopping'.rand(1111,9999);
+       $order-> tracking_no ='Op Shopping-'.rand(1111,9999);
+       // total
+
+       $total_amount = 0;
+       $cart_total = Cart::where('user_id',Auth::id())->get();
+       foreach($cart_total as $cart){
+        $total_amount += $cart->products->cost_of_good;
+       }
+       $order->total = $total_amount ;
        $order->save();
 
        $carts = Cart::where('user_id',Auth::id())->get();
@@ -47,7 +55,7 @@ class CheckoutController extends Controller
                 'order_id' =>  $order->id,
                 'product_id' => $item->product_id,
                 'quantity' => $item->quantity,
-                'price' => $item->products->selling_price,
+                'price' => $item->products->cost_of_good,
             ]);
             // decrease product quantity from product quantity
             $product = Product::where('id',$item->product_id)->first();
@@ -69,6 +77,6 @@ class CheckoutController extends Controller
         }
         $carts = Cart::where('user_id',Auth::id())->get();
         Cart::destroy($carts);
-        return redirect('/')->with('status','Product Order Successfully !');
+        return redirect('/cart')->with('status','Product Order Successfully !');
     }
 }

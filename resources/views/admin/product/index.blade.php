@@ -20,18 +20,18 @@
                 <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
-                            <th>id</th>
-                            <th>name</th>
-                            <th>category</th>
-                            <th>image</th>
-                            <th>qty</th>
-                            <th>cog</th>
-                            <th>price</th>
-                            <th>tax</th>
-                            <th>status</th>
-                            <th>trending</th>
-                            <th>treated</th>
-                            <th>action controller</th>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Image</th>
+                            <th>Quantity</th>
+                            <th>Cost Of Good</th>
+                            <th>Price</th>
+                            <th>Tax</th>
+                            <th>Status</th>
+                            <th>Trending</th>
+                            <th>Created</th>
+                            <th>Action Controller</th>
                         </tr>
                     </thead>
                     <tbody>

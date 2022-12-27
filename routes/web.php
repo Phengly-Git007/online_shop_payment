@@ -7,6 +7,7 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,12 +23,14 @@ Route::get('/contact',[ContactController::class,'contact']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('/cart',[CartController::class, 'showCart']);
-    Route::get('/checkout',[CheckoutController::class,'checkout']);
-    Route::post('/place-order',[CheckoutController::class, 'placeOrder']);
+    Route::get('cart',[CartController::class, 'showCart']);
+    Route::get('checkout',[CheckoutController::class,'checkout']);
+    Route::post('place-order',[CheckoutController::class, 'placeOrder']);
+    Route::get('orders',[UserController::class,'index']);
+    Route::get('view-order/{id}',[UserController::class,'viewOrder']);
 });
 
 Route::post('add-to-cart',[CartController::class,'addProductToCart']);
