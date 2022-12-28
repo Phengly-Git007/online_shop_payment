@@ -45,7 +45,7 @@
                       <a href="{{ route('categories.index') }}" class="nav-link @yield('category')">
                           <i class="nav-icon fas fa-th"></i>
                           <p>
-                              Category
+                              Categories
                               <span class="right badge badge-danger">New</span>
                           </p>
                       </a>
@@ -54,7 +54,16 @@
                       <a href="{{ route('products.index') }}" class="nav-link @yield('product')">
                           <i class="nav-icon fas fa-th"></i>
                           <p>
-                              Product
+                              Products
+                              <span class="right badge badge-danger">New</span>
+                          </p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="{{ route('orders.index') }}" class="nav-link @yield('order')">
+                          <i class="nav-icon fas fa-th"></i>
+                          <p>
+                              Orders
                               <span class="right badge badge-danger">New</span>
                           </p>
                       </a>
@@ -63,16 +72,7 @@
                       <a href="#" class="nav-link">
                           <i class="nav-icon fas fa-th"></i>
                           <p>
-                              Widgets
-                              <span class="right badge badge-danger">New</span>
-                          </p>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <i class="nav-icon fas fa-th"></i>
-                          <p>
-                              Widgets
+                              Users
                               <span class="right badge badge-danger">New</span>
                           </p>
                       </a>

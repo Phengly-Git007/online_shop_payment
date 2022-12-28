@@ -1,18 +1,25 @@
-@extends('frontend.master')
+@extends('admin.master')
 @section('title')
-    Order
+    Order View
+@endsection
+
+@section('header')
+    View Order
+@endsection
+
+@section('order')
+    active
+@endsection
+
+@section('action')
+    <a href="{{ url('orders') }}" class="btn btn-sm btn-warning">Back To Order</a>
 @endsection
 
 @section('content')
-    <div class="container py-3">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header bg-primary">
-                        <h5>Order View
-                            <a href="{{ url('my-orders') }}" class="btn btn-warning float-end">Back Home</a>
-                        </h5>
-                    </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
@@ -64,9 +71,26 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <h5 class="px-2 text-primary">Grand Total : <span class="float-end">$
+                                <hr>
+                                <h5 class="px-5 text-primary">Grand Total : <span class="float-right">$
                                         {{ $orders->total }}</span>
                                 </h5>
+                                <hr>
+                                <div class="mt-3">
+                                    <form action="{{ url('update-order/' . $orders->id) }}" method="POST">
+                                        @method('PUT')
+                                        @csrf
+                                        <label for="">Order Status</label>
+                                        <select class="form-control" name="status" id="status">
+                                            <option {{ $orders->status == '0' ? 'selected' : '' }} value="0">Pending
+                                            </option>
+                                            <option {{ $orders->status == '1' ? 'selected' : '' }} value="1">Completed
+                                            </option>
+                                        </select>
+                                        <button type="submit" class="btn btn-primary float-right mt-3">Update
+                                            Status</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

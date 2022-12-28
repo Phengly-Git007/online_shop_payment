@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
@@ -29,7 +30,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('cart',[CartController::class, 'showCart']);
     Route::get('checkout',[CheckoutController::class,'checkout']);
     Route::post('place-order',[CheckoutController::class, 'placeOrder']);
-    Route::get('orders',[UserController::class,'index']);
+    Route::get('my-orders',[UserController::class,'index']);
     Route::get('view-order/{id}',[UserController::class,'viewOrder']);
 });
 
@@ -38,7 +39,12 @@ Route::post('delete-cart-item',[CartController::class,'deleteProductFromCart']);
 
 // new versions
 Route::middleware(['auth','admin'])->group(function(){
-    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard.index');
+
     Route::resource('categories',CategoryController::class);
     Route::resource('products',ProductController::class);
+    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard.index');
+    Route::get('/users',[DashboardController::class,'users'])->name('dashboard.user');
+    Route::get('/orders',[OrderController::class,'index'])->name('orders.index');
+    Route::get('view/{id}',[OrderController::class,'orderView']);
+    Route::put('update-order/{id}',[OrderController::class,'updateOrder']);
 });
