@@ -1,30 +1,22 @@
 $(document).ready(function () {
-    // add to wishlist
-    $(".addToWishlist").click(function (e) {
-        e.preventDefault();
-        var product_id = $(this)
-            .closest(".product_data")
-            .find(".product_id")
-            .val();
-        $.ajaxSetup({
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            },
-        });
-        $.ajax({
-            method: "POST",
-            url: "/add-to-wishlist",
-            data: {
-                product_id: product_id,
-            },
-            success: function (response) {
-                swal(response.status);
-            },
-        });
+    loadCart();
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
     });
-
+    function loadCart() {
+        $.ajax({
+            method: "GET",
+            url: "/load-cart-data",
+            success: function (response) {
+                $(".cart-count").html("");
+                $(".cart-count").html(response.count);
+                // alert(response.count);
+            },
+        });
+    }
     // add-to-cart
-
     $(".addToCart").click(function (e) {
         e.preventDefault();
         var product_id = $(this)
@@ -52,6 +44,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 swal(response.status);
+                loadCart();
             },
         });
     });
@@ -99,7 +92,6 @@ $(document).ready(function () {
         }
     });
     // decrement quantity
-
     $(".decrement-quantity").click(function (e) {
         e.preventDefault();
         // var decrement_value = $(".quantity-input").val();

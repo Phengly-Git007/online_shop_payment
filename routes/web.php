@@ -26,7 +26,7 @@ Route::get('/contact',[ContactController::class,'contact']);
 Auth::routes();
 
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('load-cart-data',[CartController::class, 'cartCount']);
 Route::middleware(['auth'])->group(function(){
     Route::get('cart',[CartController::class, 'showCart']);
     Route::get('checkout',[CheckoutController::class,'checkout']);

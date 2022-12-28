@@ -18,7 +18,9 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('cart') }}">Cart</a>
+                    <a class="nav-link" href="{{ url('cart') }}">Cart <span
+                            class=" badge badge-pill bg-danger cart-count">0</span>
+                    </a>
                 </li>
 
                 @guest
