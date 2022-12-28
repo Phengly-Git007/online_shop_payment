@@ -42,9 +42,10 @@ Route::middleware(['auth','admin'])->group(function(){
 
     Route::resource('categories',CategoryController::class);
     Route::resource('products',ProductController::class);
-    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard.index');
-    Route::get('/users',[DashboardController::class,'users'])->name('dashboard.user');
-    Route::get('/orders',[OrderController::class,'index'])->name('orders.index');
+    Route::get('orders',[OrderController::class,'index'])->name('orders.index');
     Route::get('view/{id}',[OrderController::class,'orderView']);
     Route::put('update-order/{id}',[OrderController::class,'updateOrder']);
+    Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard.index');
+    Route::get('users',[DashboardController::class,'users'])->name('dashboard.user');
+    Route::get('view-user/{id}',[DashboardController::class,'viewUser']);
 });

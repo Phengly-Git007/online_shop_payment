@@ -32,13 +32,17 @@
                     <tbody>
                         @foreach ($orders as $order)
                             <tr>
-                                <td>{{ $order->tracking_no }}</td>
-                                <td>$ {{ $order->total }}</td>
+                                <td><span class="right badge badge-danger">{{ $order->tracking_no }}</span></td>
+                                <td><span class="right badge badge-primary">$ {{ $order->total }}</span></td>
                                 <td><span class="right badge badge-{{ $order->status ? 'success' : 'danger' }}">
                                         {{ $order->status ? 'Completed' : 'Pending' }}
                                     </span>
                                 </td>
-                                <td>{{ date('d-M-Y'), strtotime($order->created_at) }}</td>
+                                <td>
+                                    <span
+                                        class="right badge badge-warning">{{ date('d-M-Y'), strtotime($order->created_at) }}
+                                    </span>
+                                </td>
                                 <td>
                                     <a href="{{ url('view/' . $order->id) }}" class="btn btn-sm btn-info"><i
                                             class="fas fa-eye"></i> View</a>
