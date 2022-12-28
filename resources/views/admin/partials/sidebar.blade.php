@@ -69,15 +69,6 @@
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a href="{{ route('dashboard.user') }}" class="nav-link @yield('admin')">
-                          <i class="nav-icon fas fa-th"></i>
-                          <p>
-                              Admin
-                              <span class="right badge badge-danger">New</span>
-                          </p>
-                      </a>
-                  </li>
-                  <li class="nav-item">
                       <a href="{{ route('dashboard.user') }}" class="nav-link @yield('user')">
                           <i class="nav-icon fas fa-th"></i>
                           <p>

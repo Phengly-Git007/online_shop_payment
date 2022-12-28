@@ -12,6 +12,7 @@
         <div class="container">
             <div class="mb-0">
                 <a href="{{ url('/') }}">Home</a> /
+                <a href="{{ url('/wishlist') }}">Wishlist</a> /
                 <a href="{{ url('/cart') }}">Cart</a>
             </div>
         </div>

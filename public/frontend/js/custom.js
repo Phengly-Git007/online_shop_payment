@@ -1,4 +1,28 @@
 $(document).ready(function () {
+    // add to wishlist
+    $(".addToWishlist").click(function (e) {
+        e.preventDefault();
+        var product_id = $(this)
+            .closest(".product_data")
+            .find(".product_id")
+            .val();
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+        $.ajax({
+            method: "POST",
+            url: "/add-to-wishlist",
+            data: {
+                product_id: product_id,
+            },
+            success: function (response) {
+                swal(response.status);
+            },
+        });
+    });
+
     // add-to-cart
 
     $(".addToCart").click(function (e) {
