@@ -64,9 +64,12 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <h5 class="px-2 text-primary">Grand Total : <span class="float-end">$
+                                <h5 class="px-2 text-black">Grand Total : <span class="float-end">$
                                         {{ $orders->total }}</span>
                                 </h5>
+                                <h6 class="px-2 text-black">Payment Mode : <span class="float-end">
+                                        {{ $orders->payment_mode }}</span>
+                                </h6>
                             </div>
                         </div>
                     </div>

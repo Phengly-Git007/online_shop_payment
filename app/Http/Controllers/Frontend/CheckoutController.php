@@ -39,12 +39,14 @@ class CheckoutController extends Controller
        $order->country = $request->input('country');
        $order->pincode = $request->input('pincode');
        $order-> tracking_no ='Op Shopping-'.rand(1111,9999);
+       $order->payment_mode = $request->input('payment_mode');
+       $order->payment_id = $request->input('payment_id');
        // total
 
        $total_amount = 0;
        $cart_total = Cart::where('user_id',Auth::id())->get();
        foreach($cart_total as $cart){
-        $total_amount += $cart->products->cost_of_good;
+        $total_amount += $cart->products->cost_of_good * $cart->quantity;
        }
        $order->total = $total_amount ;
        $order->save();
@@ -77,6 +79,41 @@ class CheckoutController extends Controller
         }
         $carts = Cart::where('user_id',Auth::id())->get();
         Cart::destroy($carts);
+        if($request->input('payment_mode') == 'Paid By PayPal'){
+            return response()->json(['status' => 'Paid Online Successfully']);
+        }
         return redirect('/cart')->with('status','Product Order Successfully !');
+    }
+
+    public function processRazorCheck(Request $request){
+        $carts = Cart::where('user_id',Auth::id())->get();
+        $total_price = 0;
+        foreach($carts as $cart){
+            $total_price += $cart->products->cost_of_good * $cart->quantity ;
+        }
+        $first_name = $request->input('first_name');
+        $last_name = $request->input('last_name');
+        $email = $request->input('email');
+        $phone = $request->input('phone');
+        $address1 = $request->input('address1');
+        $address2 = $request->input('address2');
+        $city = $request->input('city');
+        $state = $request->input('state');
+        $country = $request->input('country');
+        $pincode  = $request->input('pincode');
+
+        return response()->json([
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'email' => $email,
+            'phone' => $phone,
+            'address1' => $address1,
+            'address2' => $address2,
+            'city' => $city,
+            'state' => $state,
+            'country' => $country,
+            'pincode' => $pincode,
+            'total_price' => $total_price
+        ]);
     }
 }

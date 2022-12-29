@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('place-order',[CheckoutController::class, 'placeOrder']);
     Route::get('my-orders',[UserController::class,'index']);
     Route::get('view-order/{id}',[UserController::class,'viewOrder']);
+    Route::post('process-to-pay',[CheckoutController::class,'processRazorCheck']);
 });
 
 Route::post('add-to-cart',[CartController::class,'addProductToCart']);

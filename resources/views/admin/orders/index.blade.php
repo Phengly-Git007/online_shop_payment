@@ -23,6 +23,7 @@
                     <thead>
                         <tr>
                             <th>Tracking Number</th>
+                            <th>Payment Mode </th>
                             <th>Total Price</th>
                             <th>Status</th>
                             <th>Order Date</th>
@@ -33,6 +34,14 @@
                         @foreach ($orders as $order)
                             <tr>
                                 <td><span class="right badge badge-danger">{{ $order->tracking_no }}</span></td>
+                                {{-- <td><span class="right badge badge-{{ $order->payment_mode ? 'success' : 'info' }}">
+                                        {{ $order->payment_mode == 'Pay On Delivery' ? 'Pay On Delivery' : 'Paid By PayPal' }}
+                                    </span>
+                                </td> --}}
+                                <td><span class="right badge badge-info">
+                                        {{ $order->payment_mode }}
+                                    </span>
+                                </td>
                                 <td><span class="right badge badge-primary">$ {{ $order->total }}</span></td>
                                 <td><span class="right badge badge-{{ $order->status ? 'success' : 'danger' }}">
                                         {{ $order->status ? 'Completed' : 'Pending' }}

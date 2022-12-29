@@ -30,6 +30,8 @@ return new class extends Migration
             $table->string('message')->nullable();
             $table->string('tracking_no');
             $table->string('total');
+            $table->string('payment_mode');
+            $table->string('payment_id')->nullable();
             $table->timestamps();
         });
     }

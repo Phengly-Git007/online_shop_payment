@@ -3,9 +3,6 @@
     Cart
 @endsection
 
-@section('scripts')
-    <script type="text/javascript" src="{{ asset('frontend/js/custom.js') }}"></script>
-@endsection
 
 @section('content')
     <div class="py-3 mb-4 shadow-sm bg-warning border-top">
@@ -78,4 +75,8 @@
 
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script type="text/javascript" src="{{ asset('frontend/js/custom.js') }}"></script>
 @endsection

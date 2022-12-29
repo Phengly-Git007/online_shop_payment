@@ -31,6 +31,7 @@
     <div class="content">
         @yield('content')
     </div>
+    <script src="{{ asset('frontend/js/checkout.js') }}"></script>
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery-3.6.3.min.js') }}"></script>
     <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>

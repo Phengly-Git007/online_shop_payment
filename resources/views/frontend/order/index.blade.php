@@ -21,7 +21,10 @@
                             <tr>
                                 <td>{{ $order->tracking_no }}</td>
                                 <td>$ {{ $order->total }}</td>
-                                <th>{{ $order->status == '0' ? 'Pending' : 'Completed' }}</th>
+                                <th><span class="right badge badge-{{ $order->status == '0' ? 'danger' : 'success' }}">
+                                        {{ $order->status == '0' ? 'Pending' : 'Completed' }}
+                                    </span>
+                                </th>
                                 <td><a href="{{ url('view-order/' . $order->id) }}" class="btn btn-primary">View</a></td>
                             </tr>
                         @endforeach

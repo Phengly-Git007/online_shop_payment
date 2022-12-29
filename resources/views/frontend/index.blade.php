@@ -16,7 +16,7 @@
                     <div class="item">
                         <div class="card">
                             <div class="card-body">
-                                <a href="" class="" style="text-decoration: none">
+                                <a href="{{ url('product/' . $product->slug) }}" class="" style="text-decoration: none">
                                     <img src="{{ Storage::url($product->image) }}" alt="image" width="250px"
                                         height="200px">
                                 </a>
