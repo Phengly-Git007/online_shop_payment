@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\RatingController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\WishlistController;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +35,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('my-orders',[UserController::class,'index']);
     Route::get('view-order/{id}',[UserController::class,'viewOrder']);
     Route::post('process-to-pay',[CheckoutController::class,'processRazorCheck']);
+    Route::post('add-rating',[RatingController::class,'addRating']);
 });
 
 Route::post('add-to-cart',[CartController::class,'addProductToCart']);
