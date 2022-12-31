@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Rating;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,6 +45,7 @@ class FrontendController extends Controller
                 $rating = Rating::where('product_id',$products->id)->get();
                 $rating_sum = Rating::where('product_id',$products->id)->sum('star_rating');
                 $user_rating = Rating::where('product_id',$products->id)->where('user_id',Auth::id())->first();
+                $reviews = Review::where('product_id',$products->id)->get();
                 if($rating->count() > 0){
                     $rating_value = $rating_sum / $rating->count();
                 }
@@ -55,7 +57,8 @@ class FrontendController extends Controller
                     'products' => $products,
                     'rating' => $rating,
                     'rating_value' => $rating_value,
-                    'user_rating' => $user_rating
+                    'user_rating' => $user_rating,
+                    'reviews' => $reviews
                 ]);
             }
             else{

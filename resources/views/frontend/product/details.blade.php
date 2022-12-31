@@ -137,17 +137,53 @@
                         </div>
                     </div>
                 </div>
+                <h5>Description</h5>
+                <p class="mt-2">
+                    {{ $products->meta_description }}
+                </p>
                 <hr>
-                <div class="col-md-12">
-                    <h5>Description</h5>
-                    <p class="mt-2">
-                        {{ $products->meta_description }}
-                    </p>
-                    <button type="button" class="btn btn-info float-right" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
-                        Rating Product
-                    </button>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-xs btn-info mr-3" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Rating Product
+                        </button>
+                        <a href="{{ url('add-review/' . $products->slug . '/user-review') }}"
+                            class="btn btn-xs btn-success ">
+                            Review Product
+                        </a>
+                    </div>
+                    <div class="col-md-8">
 
+                        @foreach ($reviews as $review)
+                            <div class="user-review">
+                                <label for="">{{ $review->user->name . ' ' . $review->user->last_name }}</label>
+                                &nbsp;
+                                @if ($review->user_id == Auth::id())
+                                    <a href="{{ url('edit-review/' . $products->slug . '/user-review') }}"
+                                        class="">Edit</a>
+                                @endif
+                                <br>
+                                @php
+                                    $rating = App\Models\Rating::where('product_id', $products->id)
+                                        ->where('user_id', $review->user->id)
+                                    ->first(); @endphp
+                                @if ($rating)
+                                    @php
+                                        $user_rating = $rating->star_rating;
+                                    @endphp
+                                    @for ($i = 1; $i <= $user_rating; $i++)
+                                        <i class="fa fa-star checked"></i>
+                                    @endfor
+                                    @for ($j = $user_rating + 1; $j <= 5; $j++)
+                                        <i class="fa fa-star "></i>
+                                    @endfor
+                                @endif
+                                <small>Reviewed On : {{ $review->created_at->format('d-M-Y') }}</small>
+                                <p>{{ $review->user_review }}</p>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
