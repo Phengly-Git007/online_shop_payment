@@ -153,8 +153,9 @@
                             Review Product
                         </a>
                     </div>
-                    <div class="col-md-8">
 
+                    <div class="col-md-8">
+                        <br>
                         @foreach ($reviews as $review)
                             <div class="user-review">
                                 <label for="">{{ $review->user->name . ' ' . $review->user->last_name }}</label>

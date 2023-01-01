@@ -27,7 +27,6 @@ class FrontendController extends Controller
     }
 
     public function viewCategory($slug){
-
        if(Category::where('slug',$slug)->exists()){
         $category = Category::where('slug',$slug)->first();
         $products = Product::where('category_id',$category->id)->where('status','0')->get();
@@ -52,7 +51,6 @@ class FrontendController extends Controller
                 else{
                     $rating_value = 0;
                 }
-
                 return view('frontend.product.details',[
                     'products' => $products,
                     'rating' => $rating,
@@ -69,4 +67,32 @@ class FrontendController extends Controller
             return redirect('/')->with('status','Category not found');
         }
     }
+
+    public function getProductList(){
+        $products = Product::select('name')->where('status', '0')->get();
+        $data = [];
+        foreach($products as $item){
+            $data[] = $item['name'];
+        }
+        return $data;
+    }
+
+    public function searchProduct(Request $request){
+        // search request form form name
+        $search_product = $request->search;
+        if($search_product != ''){
+            $product = Product::where("name","LIKE","%$search_product%")->first();
+            if($product){
+                return redirect('category/'.$product->category->slug.'/'.$product->slug);
+            }
+            else{
+                return redirect()->back()->with('status','Product not found !');
+            }
+        }
+        else{
+            return redirect();
+        }
+    }
+
+
 }

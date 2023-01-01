@@ -43,3 +43,10 @@ body {
 }
 
 /* End of Star Rating */
+
+/* search*/
+
+.search-bar {
+    width: 40%;
+    margin-left: 10%;
+}

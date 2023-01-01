@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="container my-3">
-        <div class="card shadow ">
+        <div class="card shadow CartItems">
             @if ($carts->count() > 0)
                 <div class="card-body">
                     @php

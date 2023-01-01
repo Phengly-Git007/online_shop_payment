@@ -49,7 +49,8 @@ $(document).ready(function () {
         });
     });
     // delete-cart-item
-    $(".delete-cart-item").click(function (e) {
+    // $(".delete-cart-item").click(function (e) {
+    $(document).on("click", ".delete-cart-item", function (e) {
         e.preventDefault();
         var product_id = $(this)
             .closest(".product_data")
@@ -69,8 +70,10 @@ $(document).ready(function () {
                 product_id: product_id,
             },
             success: function (response) {
-                window.location.reload();
+                // window.location.reload();
+                loadCart();
                 swal(response.status);
+                $(".CartItems").load(location.href + " .CartItems");
             },
         });
     });
