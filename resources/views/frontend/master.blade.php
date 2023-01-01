@@ -32,6 +32,24 @@
     <div class="content">
         @yield('content')
     </div>
+    <div class="whatapp-chat ">
+        <a href="https://wa.me/+885901223790?text=I'm%20interested%20in%20your%20product%20for%20details%20" target="_blank" >
+            <img src="{{ asset('image/whatsapp-logo.png') }}" alt="logo" width="50px" height="50px">
+        </a>
+    </div>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/63b190e9c2f1ac1e202b1bb1/1glmps6ea';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
     <script src="{{ asset('frontend/js/checkout.js') }}"></script>
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery-3.6.3.min.js') }}"></script>

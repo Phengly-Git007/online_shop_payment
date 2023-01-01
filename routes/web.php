@@ -23,7 +23,6 @@ Route::get('/',[FrontendController::class,'index']);
 Route::get('/category',[FrontendController::class,'category']);
 Route::get('/category/{slug}',[FrontendController::class,'viewCategory']);
 Route::get('/category/{cate_slug}/{pro_slug}',[FrontendController::class,'productDetails']);
-Route::get('/contact',[ContactController::class,'contact']);
 Route::get('/product-list',[FrontendController::class,'getProductList']);
 Route::post('/search-product',[FrontendController::class,'searchProduct']);
 
